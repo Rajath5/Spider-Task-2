@@ -284,9 +284,22 @@ function handleHighscoreClick()
     }
   }
   console.log(Userscore);
-  document.getElementById('highscore').innerHTML = "<h2>1."+Userscore[0].username+": "+Userscore[0].userscore+ "<br>" + 
-                                                     "2."+Userscore[1].username+": " +Userscore[1].userscore + "<br>" +
-                                                     "3."+ Userscore[2].username+": "+ Userscore[2].userscore+"</h2>"
+  if(Userscore.length==1)
+  {
+    document.getElementById('highscore').innerHTML = "<h2>1."+Userscore[0].username+": "+Userscore[0].userscore+ "</h2>";
+  }
+  if(Userscore.length==2)
+  {
+    document.getElementById('highscore').innerHTML = "<h2>1."+Userscore[0].username+": "+Userscore[0].userscore+ "<br>"+
+                                                      "2."+Userscore[1].username+": " +Userscore[1].userscore + "</h2>";
+  }
+  if(Userscore.length>=3)
+  {
+    document.getElementById('highscore').innerHTML = "<h2>1."+Userscore[0].username+": "+Userscore[0].userscore+ "<br>" + 
+    "2."+Userscore[1].username+": " +Userscore[1].userscore + "<br>" +
+    "3."+ Userscore[2].username+": "+ Userscore[2].userscore+"</h2>";
+  }
+ 
   document.getElementById('highscore').classList.remove('hide');
 }
 
@@ -420,6 +433,91 @@ const questions = [
             },
             {
                 text: "Maintaining and implementing strict rules", correct:false
+            }
+        ]  
+      },
+      {
+        question: "What is the name of the vaccine that is under human trials in India?",
+        answers: [
+            {
+                text: "Bharath Vaccine", correct: false
+            },
+            {
+              text: "Covaxin", correct: true
+            },
+            {
+                text: "Sputnik", correct: false
+            },
+            {
+                text: "Appolo", correct:false
+            }
+        ]  
+      },
+      {
+        question: "What is Covid-19?",
+        answers: [
+            {
+                text: "A form of bacteria", correct: false
+            },
+            {
+              text: "A form of parasite", correct: false
+            },
+            {
+                text: "A virus", correct: true
+            },
+            {
+                text: "None of the above", correct:false
+            }
+        ]  
+      },
+      {
+        question: "Which is the best practise to prevent Covid-19?",
+        answers: [
+            {
+                text: "Drink Sanitizer", correct: false
+            },
+            {
+              text: "Meditate for 5 minutes", correct: false
+            },
+            {
+                text: "Wash your hands frequently", correct: true
+            },
+            {
+                text: "Keep shouting and clapping", correct:false
+            }
+        ]  
+      },
+      {
+        question: "Which country has the most number of Covid-19 cases as of now?",
+        answers: [
+            {
+                text: "India", correct: false
+            },
+            {
+              text: "Brazil", correct: false
+            },
+            {
+                text: "USA", correct: true
+            },
+            {
+                text: "China", correct:false
+            }
+        ]  
+      },
+      {
+        question: "Why do we use sanitizers",
+        answers: [
+            {
+                text: "It increases our immunity", correct: false
+            },
+            {
+              text: "It provides strength", correct: false
+            },
+            {
+                text: "It is very good for health", correct: false
+            },
+            {
+                text: "It kills Covid-19", correct:true
             }
         ]  
       },
