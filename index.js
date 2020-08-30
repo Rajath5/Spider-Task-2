@@ -14,6 +14,8 @@ const signupButton = document.getElementById('signup-b');
 const userName = document.getElementById("user-name");
 const previousButton = document.getElementById('previous-btn');
 const displayNavbar = document.getElementById('tab-group');
+const elapsed = document.getElementById('elapsed');
+const highscoreButton = document.getElementById("highscore-btn");
 
 
 var shuffledQuestions,currentQuestionIndex;
@@ -226,15 +228,67 @@ function selectAnswer(e)
       questionElement.classList.add('hide');
       answerButtonElement.classList.add('hide');
       displayScore.innerHTML = "<h1 class='disp-score-title'>Thankyou " +"<bold>"+ "<div class='disp-score-name'>"+name +"</div>"+"</bold>"+"<br>You have answered " + "<div class='disp-score'>"+score+"</div>" +" qns correctly </h1>";
+      if(localStorage.getItem('indexValue')==null)
+      {
+        localStorage.setItem('indexValue',0);
+      }
+      var j = localStorage.getItem('indexValue');
+      localStorage.setItem('name'+j,name);
+      localStorage.setItem('score'+j,score);
+      j++;
+      localStorage.setItem('indexValue',j);
       displayScore.classList.remove('hide');
-      startButton.innerText='View';
+      highscoreButton.classList.remove('hide');
+      highscoreButton.addEventListener("click",handleHighscoreClick);
       score =0;
-      startButton.classList.remove('hide');
       checker =0;
       doublechecker =1;
+      //highscore
   }
+ 
+ 
 }
+var Userscore = [];
+function handleHighscoreClick()
+{
+  var j = localStorage.getItem('indexValue');
+  for(var i=0;i<j;i++)
+  {
+    var name = localStorage.getItem('name'+i);
+    var score = localStorage.getItem('score'+i);
+    Userscore.push({
+      username: name,
+      userscore: score
+    })
+  }
+ 
+  rightAnswer.classList.add('hide');
+  wrongAnswer.classList.add('hide');
+  questionElement.classList.add('hide');
+  answerButtonElement.classList.add('hide');
+  document.getElementById('tab-group').classList.add('hide');
+  displayScore.classList.add('hide');
+  elapsed.classList.add('hide');
+  document.getElementById('clock').classList.add('hide');
+  highscoreButton.classList.add('hide');
 
+  for(var k=0;k<Userscore.length;k++)
+  { for(var l=k;l<Userscore.length;l++)
+    {
+      if(Userscore[k].userscore<Userscore[l].userscore)
+      {
+        var temp = Userscore[k];
+        Userscore[k] = Userscore[l];
+        Userscore[l] = temp;
+      }
+    }
+  }
+  console.log(Userscore);
+  document.getElementById('highscore').innerHTML = "<h2>1."+Userscore[0].username+": "+Userscore[0].userscore+ "<br>" + 
+                                                     "2."+Userscore[1].username+": " +Userscore[1].userscore + "<br>" +
+                                                     "3."+ Userscore[2].username+": "+ Userscore[2].userscore+"</h2>"
+  document.getElementById('highscore').classList.remove('hide');
+}
 
 
 
@@ -387,7 +441,6 @@ let hours =0;
 const hourHand = document.querySelector('[data-hour-hand]')
 const minuteHand = document.querySelector('[data-minute-hand]')
 const secondHand = document.querySelector('[data-second-hand]')
-const elapsed = document.getElementById('elapsed');
 elapsed.innerHTML = "Time Elapsed "+hours+":"+minute+":"+seconds;
 function setClock() {
   const currentDate = new Date();

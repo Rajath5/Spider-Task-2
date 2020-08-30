@@ -16,11 +16,15 @@
        </div>
        <button class="signup-b" onsubmit="handleSubmit()" id="signup-b">Ready to Go</button>
     </div>
+
     
     <div class="container hide" id="container">
 
-
-        <div class="clock">
+        
+    <div class="highscore hide" id="highscore">
+        <h1>High-Scores</h1>
+    </div>
+        <div class="clock" id="clock">
             <div class="hand hour" data-hour-hand></div>
             <div class="hand minute" data-minute-hand></div>
             <div class="hand second" data-second-hand></div>
@@ -72,10 +76,11 @@
                 <button class="btn">Answer 4</button>
             </div>
         </div>
-        <div class="controls">
+        <div class="controls" id="controls">
             <button class="start-btn btn" id="start-btn">Start</button>
             <button class="next-btn btn hide" id="previous-btn">Previous</button>
             <button class="next-btn btn hide" id="next-btn">Next</button>
+            <button class="highscore btn hide" id="highscore-btn">View Leaderboard</button>
         </div>
     </div> 
  

@@ -45,6 +45,14 @@ body.wrong
     box-shadow: 0 0 1rem 0.2rem;
 }
 
+.highscore
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: darkorchid;
+}
+
 .btn-grid
 {
     display: grid;
